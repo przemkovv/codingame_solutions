@@ -6,7 +6,7 @@ RM=rm -f
 CPPFLAGS=-g -std=c++11
 LDFLAGS=-g -std=c++11
 #LDLIBS=$(shell root-config --libs)
-SRCS=skynet_the_chasm.cpp mars_lander_lvl_1.cpp
+SRCS=skynet_the_chasm.cpp mars_lander_lvl_1.cpp mars_lander_lvl_2.cpp
 
 OBJS=$(subst .cpp,.o,$(SRCS))
 APPS=$(subst .cpp,,$(SRCS))

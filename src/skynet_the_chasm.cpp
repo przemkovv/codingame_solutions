@@ -83,7 +83,6 @@ int main()
 
    debug();
 
-
    if (speed_increase > 0) {
 
       while(--waits >= 0) {

@@ -1,23 +1,27 @@
 
 
-C=gcc 
+C=gcc
 CXX=g++
 RM=rm -f
 CPPFLAGS=-g -std=c++11
 LDFLAGS=-g -std=c++11
-#LDLIBS=$(shell root-config --libs) 
-SRCS=skynet.cpp
-OBJS=$(subst .cpp,.o,$(SRCS)) 
+#LDLIBS=$(shell root-config --libs)
+SRCS=skynet_the_chasm.cpp
 
-all: skynet 
+OBJS=$(subst .cpp,.o,$(SRCS))
+APPS=$(subst .cpp,,$(SRCS))
 
-skynet: $(OBJS) 
-	$(CXX) $(LDFLAGS) -o skynet $(OBJS) $(LDLIBS) 
+.PHONY: all clean dist-clean
+all: ${APPS}
 
-%.o: %.cpp $(CXX) $(CPPFLAGS) -c $<
+%: %.o
+	$(CXX) $(LDFLAGS) -o $@ $@.o $(LDLIBS)
 
-clean: 
-	$(RM) $(OBJS) 
+%.o: %.cpp 
+	$(CXX) $(CPPFLAGS) -c $<
 
-dist-clean: clean 
-	$(RM) skynet
+clean:
+	$(RM) $(OBJS)
+
+dist-clean: clean
+	$(RM) ${APPS}
